@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import type { ReaderSettings } from "@/lib/types";
+import { FONT_OPTIONS } from "@/lib/types";
 import styles from "./SettingsPanel.module.css";
 
 interface Props {
@@ -140,6 +141,51 @@ export default function SettingsPanel({
               className={styles.slider}
             />
             <p className={styles.hint}>Kelimenin başından kaç harf renklensin</p>
+          </div>
+
+          {/* Letter spacing */}
+          <div className={styles.group}>
+            <label className={styles.label}>
+              <span>Harf Aralığı</span>
+              <span className={styles.value}>
+                {settings.letterSpacing.toFixed(2)} em
+              </span>
+            </label>
+            <input
+              type="range"
+              min={-5}
+              max={20}
+              step={1}
+              value={Math.round(settings.letterSpacing * 100)}
+              onChange={(e) =>
+                onChange({ letterSpacing: +e.target.value / 100 })
+              }
+              className={styles.slider}
+            />
+            <div className={styles.sliderHints}>
+              <span>Sıkışık</span><span style={{ textAlign: "right" }}>Geniş</span>
+            </div>
+          </div>
+
+          {/* Font family */}
+          <div className={styles.group}>
+            <label className={styles.label}>
+              <span>Yazı Tipi</span>
+            </label>
+            <div className={styles.fontButtons}>
+              {FONT_OPTIONS.map(({ key, label, css }) => (
+                <button
+                  key={key}
+                  className={`${styles.fontBtn} ${
+                    settings.fontFamily === key ? styles.fontBtnActive : ""
+                  }`}
+                  style={{ fontFamily: css }}
+                  onClick={() => onChange({ fontFamily: key })}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Theme */}

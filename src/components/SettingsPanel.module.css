@@ -252,3 +252,29 @@
 .toggle input:checked ~ .track::after {
   transform: translateX(20px);
 }
+
+/* Font family picker */
+.fontButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.fontBtn {
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--glass);
+  color: var(--text2);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.fontBtn:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+.fontBtnActive {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}

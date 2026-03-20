@@ -146,7 +146,15 @@ const RSVPReader = forwardRef<RSVPReaderHandle, Props>(function RSVPReader(
         <div
           key={currentIndex}
           className={styles.word}
-          style={{ fontSize: `${settings.fontSize}px` }}
+          style={{
+            fontSize: `${settings.fontSize}px`,
+            letterSpacing: `${settings.letterSpacing}em`,
+            fontFamily: settings.fontFamily === "inter"     ? "var(--font-inter, 'Inter', sans-serif)"
+                      : settings.fontFamily === "jetbrains" ? "var(--font-mono, 'JetBrains Mono', monospace)"
+                      : settings.fontFamily === "georgia"   ? "Georgia, serif"
+                      : settings.fontFamily === "courier"   ? "'Courier New', monospace"
+                      : "system-ui, sans-serif",
+          }}
         >
           <span
             className={styles.hi}
