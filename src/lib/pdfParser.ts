@@ -62,10 +62,37 @@ export async function extractPageRange(
     for (let p = from; p <= Math.min(to, pdf.numPages); p++) {
       const page = await pdf.getPage(p);
       const content = await page.getTextContent();
-      const text = content.items
-        .map((item) => ("str" in item ? item.str : ""))
-        .join(" ");
-      parts.push(text);
+      
+      let pageText = "";
+      let lastItem: any = null;
+
+      for (const item of content.items) {
+        if (!("str" in item)) continue;
+        const str = item.str;
+        const transform = item.transform; // [scaleX, skewY, skewX, scaleY, translateX, translateY]
+        
+        if (lastItem) {
+          const lastTransform = lastItem.transform;
+          const isSameLine = Math.abs(transform[5] - lastTransform[5]) < 2;
+          
+          if (isSameLine) {
+            // Check horizontal gap
+            const gap = transform[4] - (lastTransform[4] + lastItem.width);
+            // If gap is large, add a space (heuristically > 20% of font height/width)
+            // But if it's small or negative (overlap), just join
+            if (gap > 2) {
+              pageText += " ";
+            }
+          } else {
+            // New line
+            pageText += "\n";
+          }
+        }
+        
+        pageText += str;
+        lastItem = item;
+      }
+      parts.push(pageText.normalize("NFKC"));
     }
     return parts.join("\n");
   } finally {
@@ -137,12 +164,25 @@ async function detectChaptersHeuristic(
     const page = await pdf.getPage(p);
     const content = await page.getTextContent();
 
-    // Look at the first few items of each page for a heading-like string
-    const firstItems = content.items.slice(0, 8);
-    for (const raw of firstItems) {
-      if (!("str" in raw)) continue;
-      const str = (raw as { str: string }).str.trim();
-      if (!str || str.length < 3 || str.length > 80) continue;
+    // Group the first few items into lines to find headings
+    const lines: string[] = [];
+    let currentLine = "";
+    let lastY = -1;
+
+    for (const item of content.items.slice(0, 15)) {
+      if (!("str" in item)) continue;
+      const y = Math.round(item.transform[5]);
+      if (lastY !== -1 && Math.abs(y - lastY) > 2) {
+        if (currentLine.trim()) lines.push(currentLine.trim());
+        currentLine = "";
+      }
+      currentLine += item.str;
+      lastY = y;
+    }
+    if (currentLine.trim()) lines.push(currentLine.trim());
+
+    for (const str of lines) {
+      if (str.length < 3 || str.length > 80) continue;
       if (HEADING_PATTERNS.some((r) => r.test(str))) {
         if (p > prevChapterStart) {
           chapters.push({
