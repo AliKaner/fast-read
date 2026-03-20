@@ -116,6 +116,18 @@ const RSVPReader = forwardRef<RSVPReaderHandle, Props>(function RSVPReader(
   const [hi, rest] = splitWord(word, settings.highlightRatio);
   const progress = words.length > 0 ? ((currentIndex + 1) / words.length) * 100 : 0;
 
+  // Calculate remaining reading time
+  const remainingWords = words.length - currentIndex - 1;
+  const remainingSec = Math.ceil((remainingWords / localWpm) * 60);
+  const etaMin = Math.floor(remainingSec / 60);
+  const etaSec = remainingSec % 60;
+  const etaLabel =
+    remainingSec <= 0
+      ? "Bitti"
+      : etaMin > 0
+      ? `~${etaMin} dk ${etaSec > 0 ? etaSec + " sn" : ""}`
+      : `~${remainingSec} sn`;
+
   return (
     <section className={styles.screen}>
       {/* Progress bar */}
@@ -146,7 +158,13 @@ const RSVPReader = forwardRef<RSVPReaderHandle, Props>(function RSVPReader(
         </div>
         <div className={styles.meta}>
           <span>{localWpm} KDK</span>
+          <span className={styles.metaDivider}>·</span>
           <span>{Math.round(progress)}%</span>
+          <span className={styles.metaDivider}>·</span>
+          <span className={styles.metaEta}>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            {etaLabel}
+          </span>
         </div>
       </div>
 
