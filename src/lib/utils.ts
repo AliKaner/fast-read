@@ -11,7 +11,8 @@ export function tokenize(text: string): string[] {
  * Always highlights at least 1 character, at most all characters.
  */
 export function splitWord(word: string, ratio: number): [string, string] {
-  const len = Math.max(1, Math.min(word.length, Math.ceil(word.length * ratio)));
+  if (ratio <= 0) return ["", word];
+  const len = Math.min(word.length, Math.ceil(word.length * ratio));
   return [word.slice(0, len), word.slice(len)];
 }
 

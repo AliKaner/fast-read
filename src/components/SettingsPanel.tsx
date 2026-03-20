@@ -130,7 +130,7 @@ export default function SettingsPanel({
             </label>
             <input
               type="range"
-              min={10}
+              min={0}
               max={70}
               step={5}
               value={Math.round(settings.highlightRatio * 100)}
