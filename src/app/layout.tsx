@@ -13,9 +13,43 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FastRead — Hızlı Okuma",
+  title: "FastRead — Hızlı Okuma Uygulaması (PDF & Metin)",
   description:
-    "Kelime kelime hızlı okuma uygulaması. PDF veya metin yükle, hızını ayarla, biyonik highlight ile oku.",
+    "Kişiselleştirilebilir hız kontrolü, biyonik vurgu (Bionic Reading) ve PDF bölüm tespitiyle okuma hızınızı 3 kata kadar artırın. Metinlerinizi ve kitaplarınızı daha verimli tüketin.",
+  keywords: [
+    "hızlı okuma",
+    "speed reading",
+    "biyonik okuma",
+    "bionic reading",
+    "pdf okuyucu",
+    "okuma verimliliği",
+    "kelime kelime okuma",
+    "RSVP reader",
+    "türkçe hızlı okuma",
+  ],
+  authors: [{ name: "FastRead Team" }],
+  openGraph: {
+    title: "FastRead — Akıllı Hızlı Okuma Platformu",
+    description:
+      "PDF ve metin dosyalarını biyonik vurgu ile kelime kelime okuyun. Okuma hızınızı bilimsel tekniklerle geliştirin.",
+    url: "https://fastread.io", // Placeholder canonical
+    siteName: "FastRead",
+    locale: "tr_TR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FastRead — Hızına Hız Kat",
+    description:
+      "Biyonik okuma tekniği ve akıllı PDF analizi ile tanışın. Okuma sürelerinizi yarıya indirin.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({

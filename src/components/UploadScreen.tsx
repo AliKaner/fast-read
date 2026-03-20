@@ -54,16 +54,20 @@ export default function UploadScreen({ onText, onPdfFile }: Props) {
   return (
     <section className={styles.screen}>
       <div className={styles.hero}>
-        <div className={styles.iconWrap}>
+        <div className={styles.iconWrap} aria-hidden="true">
           <span>⚡</span>
         </div>
-        <h1>FastRead</h1>
-        <p className={styles.subtitle}>PDF veya metin yükle, hızlı okumaya başla</p>
+        <h1>FastRead — Hızına Hız Kat</h1>
+        <p className={styles.subtitle}>PDF veya metin yükle, hemen okumaya başla</p>
       </div>
 
       {/* Demo button */}
-      <button className={styles.demoBtn} onClick={() => onText(DEMO_TEXT)}>
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+      <button 
+        className={styles.demoBtn} 
+        onClick={() => onText(DEMO_TEXT)}
+        aria-label="Demo metniyle hızlı okumayı dene"
+      >
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
           <polygon points="5 3 19 12 5 21 5 3" />
         </svg>
         Demo Metni Dene (~1000 kelime)
@@ -76,6 +80,10 @@ export default function UploadScreen({ onText, onPdfFile }: Props) {
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onClick={() => fileInputRef.current?.click()}
+        role="button"
+        tabIndex={0}
+        aria-label="PDF sürükle bırak veya dosya seçmek için tıkla"
+        onKeyDown={(e) => e.key === "Enter" && fileInputRef.current?.click()}
       >
         <svg
           width="44"
@@ -85,6 +93,7 @@ export default function UploadScreen({ onText, onPdfFile }: Props) {
           stroke="currentColor"
           strokeWidth="1.5"
           opacity={0.4}
+          aria-hidden="true"
         >
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
           <polyline points="17 8 12 3 7 8" />
@@ -101,10 +110,11 @@ export default function UploadScreen({ onText, onPdfFile }: Props) {
           accept=".pdf,.txt"
           hidden
           onChange={handleFileInput}
+          aria-hidden="true"
         />
       </div>
 
-      <div className={styles.divider}>
+      <div className={styles.divider} role="separator">
         <span>veya metin yapıştır</span>
       </div>
 
@@ -114,8 +124,13 @@ export default function UploadScreen({ onText, onPdfFile }: Props) {
           placeholder="Metni buraya yapıştır..."
           rows={7}
           className={styles.textarea}
+          aria-label="Hızlı okunacak metin alanı"
         />
-        <button className={styles.startBtn} onClick={handleStart}>
+        <button 
+          className={styles.startBtn} 
+          onClick={handleStart}
+          aria-label="Yazılan metinle okumayı başlat"
+        >
           <span>Okumaya Başla</span>
           <svg
             width="16"
@@ -124,6 +139,7 @@ export default function UploadScreen({ onText, onPdfFile }: Props) {
             fill="none"
             stroke="currentColor"
             strokeWidth="2.5"
+            aria-hidden="true"
           >
             <polyline points="9 18 15 12 9 6" />
           </svg>
