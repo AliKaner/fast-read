@@ -1,0 +1,95 @@
+/* ──────────────────────────────────────────────
+   CSS VARIABLES — DARK THEME (default)
+─────────────────────────────────────────────── */
+:root {
+  --bg: #0d0f14;
+  --bg2: #13161e;
+  --bg3: #1c2030;
+  --surface: #1e2235;
+  --surface2: #252942;
+  --border: rgba(255, 255, 255, 0.07);
+  --text: #e8eaf0;
+  --text2: #8b90a7;
+  --text3: #4e536a;
+  --accent: #f97316;
+  --accent-glow: rgba(249, 115, 22, 0.25);
+  --glass: rgba(255, 255, 255, 0.04);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --transition: 0.2s ease;
+  --font-sans: var(--font-inter, system-ui, sans-serif);
+  --font-mono: var(--font-mono, "JetBrains Mono", monospace);
+}
+
+[data-theme="light"] {
+  --bg: #f0f2f8;
+  --bg2: #e4e7f0;
+  --bg3: #d8dceb;
+  --surface: #ffffff;
+  --surface2: #f5f6fc;
+  --border: rgba(0, 0, 0, 0.08);
+  --text: #1a1d2e;
+  --text2: #555979;
+  --text3: #aab0cc;
+  --glass: rgba(255, 255, 255, 0.6);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="sepia"] {
+  --bg: #1a1208;
+  --bg2: #211808;
+  --bg3: #2a2010;
+  --surface: #2e2410;
+  --surface2: #3a2e18;
+  --border: rgba(255, 220, 150, 0.1);
+  --text: #e8d5a3;
+  --text2: #a08050;
+  --text3: #5a4025;
+  --accent: #d4a060;
+  --accent-glow: rgba(212, 160, 96, 0.25);
+  --glass: rgba(255, 220, 100, 0.04);
+}
+
+/* ──────────────────────────────────────────────
+   RESET & BASE
+─────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background 0.4s, color 0.4s;
+}
+
+/* ──────────────────────────────────────────────
+   SCROLLBAR
+─────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text3);
+}

@@ -1,0 +1,263 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;        /* always fills remaining height in the page column */
+  min-height: 0;
+}
+
+/* Progress */
+.progressWrap {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background: var(--bg3);
+}
+.progressBar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #ff6b00);
+  transition: width 0.15s linear;
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+.progressLabel {
+  position: absolute;
+  right: 0.75rem;
+  top: 8px;
+  font-size: 0.72rem;
+  color: var(--text3);
+  font-family: var(--font-mono, monospace);
+}
+
+/* RSVP */
+.rsvpContainer {
+  flex: 1;          /* fills all space not taken by progress/controls/slider */
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;   /* word always vertically centered in available space */
+  padding: 1.5rem 1.5rem 1rem;
+  position: relative;
+  width: 100%;
+  background: var(--bg);
+  transition: all 0.3s ease;
+}
+
+.focusLine {
+  position: absolute;
+  width: 2px;
+  height: 90px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--accent-glow),
+    transparent
+  );
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.word {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  animation: wordIn 0.08s ease both;
+  min-width: 1ch;
+  text-align: center;
+}
+
+@keyframes wordIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hi {
+  text-shadow: 0 0 20px currentColor;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+
+.rest {
+  color: var(--text);
+}
+
+.meta {
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.75rem;
+  color: var(--text3);
+  font-family: var(--font-mono, monospace);
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0 1.5rem 0.75rem;
+}
+
+.ctrlBtn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.ctrlBtn:hover {
+  background: var(--surface2);
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+}
+
+.playBtn {
+  width: 56px;
+  height: 56px;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+.playBtn:hover {
+  filter: brightness(1.1);
+  transform: scale(1.08);
+  box-shadow: 0 8px 28px var(--accent-glow);
+}
+
+/* ── Inline speed slider ── */
+.speedRow {
+  width: 100%;
+  max-width: 520px;
+  /* card-like well */
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin: 0 auto 0.75rem;
+  padding: 0.75rem 1.25rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.speedLabelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.speedLabelText {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text2);
+}
+
+.speedValue {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-glow);
+  padding: 0.15rem 0.6rem;
+  border-radius: 20px;
+  font-family: var(--font-mono, monospace);
+  letter-spacing: 0.03em;
+}
+
+.speedSlider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(
+    to right,
+    var(--accent) 0%,
+    var(--accent) var(--fill, 26%),
+    var(--bg3) var(--fill, 26%)
+  );
+  outline: none;
+  cursor: pointer;
+}
+.speedSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: 3px solid var(--surface);
+  box-shadow: 0 0 0 3px var(--accent-glow), 0 2px 8px rgba(0,0,0,0.3);
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.speedSlider::-webkit-slider-thumb:hover {
+  transform: scale(1.18);
+  box-shadow: 0 0 0 5px var(--accent-glow), 0 2px 12px rgba(0,0,0,0.4);
+}
+.speedSlider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: 3px solid var(--surface);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.speedHints {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.69rem;
+  color: var(--text3);
+  margin-top: -0.1rem;
+}
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+  .rsvpContainer {
+    padding: 1.5rem 1rem 1rem;
+    min-height: 130px;
+  }
+
+  .controls {
+    gap: 0.5rem;
+    padding: 0 0.75rem 0.5rem;
+  }
+
+  .ctrlBtn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .playBtn {
+    width: 50px;
+    height: 50px;
+  }
+
+  .speedRow {
+    margin: 0 0.75rem 0.75rem;
+    padding: 0.6rem 1rem 0.7rem;
+  }
+
+  .meta {
+    font-size: 0.68rem;
+    gap: 1rem;
+  }
+}

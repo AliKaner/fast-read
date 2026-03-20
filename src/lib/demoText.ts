@@ -1,0 +1,22 @@
+// ~1000 Türkçe kelimelik demo metin
+export const DEMO_TEXT = `
+Hızlı okuma, insanların metinleri daha kısa sürede anlayarak işleyebilmesini sağlayan bir beceriler bütünüdür. Günümüzde bilgiye erişim inanılmaz derecede kolaylaşmış olsa da bu bilgiyi verimli biçimde tüketmek büyük ölçüde bireysel okuma hızına bağlı kalmaktadır. Ortalama bir yetişkin dakikada iki yüz ile dört yüz kelime arasında okuyabilmektedir; ancak eğitimli okuyucular bu sayıyı bin kelimenin çok üzerine taşıyabilmektedir.
+
+Hızlı okumanın temeli alt seslendirmeyi azaltmaktır. Alt seslendirme, okurken kelimeleri zihinsel olarak telaffuz etme alışkanlığıdır. Çoğu insan çocukken sesli okumayı öğrenirken bu alışkanlığı edinir ve yetişkinlikte de sürdürür. Bu alışkanlık okuma hızını konuşma hızının biraz üzerine sınırlar; bu da genellikle dakikada iki yüz elli kelime civarındadır. Alt seslendirme bastırıldığında beyin kelimeleri doğrudan görsel birimler olarak tanımaya başlar ve işlem hızı önemli ölçüde artar.
+
+Biyonik okuma tekniği bu ilkeyi daha ileri bir boyuta taşır. Kelimelerin başındaki birkaç harf kalın ya da farklı bir renkte gösterildiğinde beyin bu ipucunu kullanarak kelimenin geri kalanını otomatik olarak tamamlar. Araştırmalar bu yöntemin özellikle dikkat güçlüğü çeken okuyucularda kavramayı artırdığını ortaya koymaktadır. Göz yalnızca vurgulanan harfleri tarar ve zihin boşluğu doldurmak için yoğun bir tanıma sürecine girmek zorunda kalmaz.
+
+Göz hareketleri de hızlı okumanın kritik bir bileşenidir. Normal okuma sırasında gözler satır üzerinde art arda duruşlar yapar; her duruşta birkaç kelime aynı anda işlenir. Bu duruşların süresini ve sayısını azaltmak okumanın önemli ölçüde hızlanmasını sağlar. Periferik görüşü genişletme egzersizleri gözlerin her duruşta daha geniş bir kelime grubu yakalamasına yardımcı olur; böylece aynı sürede çok daha fazla içerik işlenebilir.
+
+Kelime başına sunma yöntemi, yani RSVP sistemi, bu uygulamanın dayandığı temel teknolojidir. Bu yöntemde kelimeler ortalanmış bir odak noktasında arka arkaya gösterilir; böylece göz hiç hareket etmek zorunda kalmaz. Tüm bilişsel kapasite anlama ve kavramaya yönelir, göz hareketi için herhangi bir enerji harcanmaz. Hız ayarlandığında dakikada yüzden fazla kelimeden beş yüzü aşkın kelimeye kadar rahatça çalışılabilir ve zamanla bu rakam daha da artırılabilir.
+
+Kavrayışı korumak hız kadar önemlidir. Saniyeleri geçen bir sürede okunan ancak anlaşılmayan bir metin hiçbir işe yaramaz. Uzmanlar en az yüzde yetmiş anlama düzeyinin korunması gerektiğini vurgular. Bunu başarmak için okuma seansı bitiminde metnin ana fikirlerini yazılı ya da sözlü olarak özetlemek etkili bir tekniktir. Bu uygulama hem kavrayışı test eder hem de uzun süreli hafızaya yerleşmeyi güçlendirir.
+
+Düzenli pratik hız ve anlama arasındaki dengeyi giderek daha üst seviyelere taşır. Her gün yirmi dakikalık kasıtlı egzersiz bile birkaç hafta içinde ölçülebilir gelişim sağlar. Odak dağıtıcı unsurlardan uzak, sessiz bir ortamda çalışmak eğitimin verimliliğini artırır. Aydınlatma düzeyi ve ekran parlaklığı da göz yorgunluğunu doğrudan etkiler; her ikisini de rahat bir düzeye ayarlamak uzun süreli çalışmayı kolaylaştırır.
+
+Farklı metin türleri farklı stratejiler gerektirir. Teknik belgeler, akademik makaleler veya hukuki metinler gibi yoğun içerikler daha yavaş ve dikkatli bir yaklaşım gerektirirken roman veya popüler bilim yazıları daha yüksek hızlarda rahatlıkla okunabilir. Okuyucu kendi ihtiyacına göre bu dengeyi bilinçli biçimde kurmalıdır. Bazı bölümler taranabilir, önemli kısımlar ise tam dikkatle okunabilir.
+
+Hızlı okuma tekniklerinin faydaları sınıf veya iş hayatının çok ötesine geçer. Artan okuma verimliliği daha fazla kitap, makale ve araştırma tüketmeyi mümkün kılar. Bu da bireyin genel bilgi tabanını genişletir, eleştirel düşünme kapasitesini geliştirir ve farklı bakış açılarına olan duyarlılığını artırır. Sonuç olarak hızlı okumayı bir alışkanlık hâline getirmek yalnızca üretkenliği değil yaşam boyu öğrenme potansiyelini de köklü biçimde dönüştürür.
+
+Bu uygulamayı düzenli olarak kullanan okuyucular genellikle birkaç gün içinde fark edilir bir ivme kazandıklarını bildirmektedir. İlk aşamada düşük bir hızla başlamak, kavrama tam olarak sağlandıktan sonra kademe kademe hızı artırmak en sağlıklı yaklaşımdır. Sabır ve tutarlılık bu sürecin iki vazgeçilmez unsurudur. Teknoloji yalnızca bir araçtır; asıl gelişimi yaratan beynin kendisidir.
+`.trim();
